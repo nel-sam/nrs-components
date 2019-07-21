@@ -6,20 +6,24 @@ import { NrsContactCardComponent } from './nrs-contact-card/nrs-contact-card.com
 
 @NgModule({
   declarations: [
-    NrsContactCardComponent
+    NrsContactCardComponent // Required for elements:
   ],
   imports: [
     BrowserModule
   ],
   providers: [],
-  bootstrap: [NrsContactCardComponent],
+  bootstrap: [
+    NrsContactCardComponent // Required for elements:
+  ],
   entryComponents: [
-    NrsContactCardComponent
+    NrsContactCardComponent // Required for elements:
   ]
 })
 export class AppModule {
   constructor(private injector: Injector) { }
   ngDoBootstrap() {
+    // Required for elements: This allows us to byass app-module component and use our
+    // elements components directly in html
     const el = createCustomElement(NrsContactCardComponent, { injector: this.injector });
     customElements.define('nrs-contact-card', el);
   }

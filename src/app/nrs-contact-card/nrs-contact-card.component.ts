@@ -6,7 +6,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   styleUrls: [
     './nrs-contact-card.component.scss'
   ],
-  encapsulation: ViewEncapsulation.ShadowDom
+  encapsulation: ViewEncapsulation.ShadowDom // Required for elements: Makse CSS into JS
 })
 export class NrsContactCardComponent implements OnInit {
 
