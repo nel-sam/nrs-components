@@ -22,9 +22,17 @@ import { NrsContactCardComponent } from './nrs-contact-card/nrs-contact-card.com
 export class AppModule {
   constructor(private injector: Injector) { }
   ngDoBootstrap() {
-    // Required for elements: This allows us to byass app-module component and use our
+    // Required for elements: This allows us to bypass app-module component and use our
     // elements components directly in html
-    const el = createCustomElement(NrsContactCardComponent, { injector: this.injector });
-    customElements.define('nrs-contact-card', el);
+
+    const elements: any[] = [
+      [NrsContactCardComponent, 'nrs-contact-card', { name: 'test' }]
+    ];
+
+    for (const [component, name, params] of elements) {
+      const el = createCustomElement(component, { injector: this.injector });
+      customElements.define(name, el);
+      document.getElementsByTagName(name)[0].appendChild(params);
+    }
   }
 }
